@@ -1,0 +1,11 @@
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--#{$prefix}body-bg);
+    color: var(--#{$prefix}body-color-primary);
+    font-family: 'Fira Code', monospace;
+    line-height: 1.5;
+}

@@ -1,0 +1,23 @@
+.border {
+    border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
+}
+
+.border-top {
+    border-top: var(--#{$prefix}border-width) solid
+        var(--#{$prefix}border-color);
+}
+
+.border-right {
+    border-right: var(--#{$prefix}border-width) solid
+        var(--#{$prefix}border-color);
+}
+
+.border-bottom {
+    border-bottom: var(--#{$prefix}border-width) solid
+        var(--#{$prefix}border-color);
+}
+
+.border-left {
+    border-left: var(--#{$prefix}border-width) solid
+        var(--#{$prefix}border-color);
+}

@@ -1,0 +1,30 @@
+:root {
+    // global
+    @each $key, $value in $light-mode {
+        --#{$prefix}#{$key}: #{$value};
+    }
+
+    // body
+    --#{$prefix}body-bg: var(--#{$prefix}gray-000);
+    --#{$prefix}body-color-primary: var(--#{$prefix}gray-900);
+    --#{$prefix}body-color-secondary: var(--#{$prefix}gray-800);
+
+    // borders
+    --#{$prefix}border-width: 1px;
+    --#{$prefix}border-color: var(--#{$prefix}gray-300);
+}
+
+:root[thank-you-for-saving-my-eyes='true'] {
+    // global
+    @each $key, $value in $dark-mode {
+        --#{$prefix}#{$key}: #{$value};
+    }
+
+    // body
+    --#{$prefix}body-bg: var(--#{$prefix}gray-000);
+    --#{$prefix}body-color-primary: var(--#{$prefix}gray-500);
+    --#{$prefix}body-color-secondary: var(--#{$prefix}gray-400);
+
+    // borders
+    --#{$prefix}border-color: var(--#{$prefix}gray-700);
+}
