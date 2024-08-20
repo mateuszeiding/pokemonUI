@@ -34,24 +34,24 @@ $light-mode: (
     nth($grays, 10): #1a1a3d
 );
 $dark-mode: (
-    // Ghost White
-    nth($grays, 1): #121212,
-    // Very light gray
-    nth($grays, 2): #1a1a2e,
-    // Light gray
-    nth($grays, 3): #2a2a52,
+    // Very dark background
+    nth($grays, 1): #0d0d0d,
+    // Dark background alternative
+    nth($grays, 2): #171725,
+    // Dark gray
+    nth($grays, 3): #20203a,
+    // Deep gray
+    nth($grays, 4): #2a2a4a,
     // Soft gray
-    nth($grays, 4): #444466,
-    // Light-mid gray
-    nth($grays, 5): #5f5f7a,
-    // Mid gray
-    nth($grays, 6): #7a7a93,
-    // Medium dark gray (Adjusted for better contrast)
-    nth($grays, 7): #9c9cb9,
-    // Darker gray (Adjusted for better contrast)
-    nth($grays, 8): #b0b0c8,
-    // Deep gray (Adjusted for better contrast)
-    nth($grays, 9): #d8d8e4,
-    // Dark gray suitable for text (WCAG compliant)
-    nth($grays, 10): #ececf2
+    nth($grays, 5): #3a3a5a,
+    // Medium gray
+    nth($grays, 6): #4f4f70,
+    // Lighter gray for secondary content
+    nth($grays, 7): #6a6a8a,
+    // Light gray for accents
+    nth($grays, 8): #8c8caa,
+    // Lightest gray for borders
+    nth($grays, 9): #a8a8c8,
+    // Light gray suitable for text (WCAG compliant)
+    nth($grays, 10): #d8d8e4
 );
