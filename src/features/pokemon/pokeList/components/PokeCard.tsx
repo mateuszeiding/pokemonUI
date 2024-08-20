@@ -10,9 +10,9 @@ type PokeCard = {
 export default function PokeCard({ name, id }: Readonly<PokeCard>) {
     const image = useMemo(
         () =>
-            new Promise((resolve) => {
+            new Promise<string>((resolve) => {
                 const img = new Image();
-                img.src = `src/assets/pokemon/${id}.svg`;
+                img.src = `pokemon/${id}.svg`;
                 img.onload = () => {
                     console.log('loaded', img.src);
                     resolve(img.src);
@@ -31,10 +31,10 @@ export default function PokeCard({ name, id }: Readonly<PokeCard>) {
             <h2 className='tx-capitalize'>{name}</h2>
             <Suspense fallback={<div className='poke-img skeleton'></div>}>
                 <Await resolve={image}>
-                    {(img) => (
+                    {(src: string) => (
                         <img
                             className='poke-img'
-                            src={img}
+                            src={src}
                             alt={name}
                         />
                     )}
