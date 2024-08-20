@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import Root from './Root';
+import Root from '@/Root';
 
 export default function Router() {
     const router = createBrowserRouter([
