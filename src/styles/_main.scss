@@ -9,4 +9,12 @@ body {
     font-family: 'Fira Code', monospace;
     line-height: 1.5;
     font-size: 1.6rem;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
