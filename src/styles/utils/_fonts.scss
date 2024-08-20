@@ -15,3 +15,15 @@
         line-height: $value;
     }
 }
+
+.tx-uppercase {
+    text-transform: uppercase;
+}
+
+.tx-lowercase {
+    text-transform: lowercase;
+}
+
+.tx-capitalize {
+    text-transform: capitalize;
+}
