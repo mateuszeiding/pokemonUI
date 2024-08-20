@@ -69,6 +69,7 @@ export default [
                             '@headless',
                             path.resolve(__dirname, './src/features'),
                         ],
+                        ['@assets', path.resolve(__dirname, './src/assets')],
                     ],
 
                     extensions: ['.js', '.jsx', '.ts', '.d.ts', '.tsx'],

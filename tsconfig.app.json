@@ -4,6 +4,7 @@
       "@/*": ["./src/*"],
       "@headless/*": ["./src/headless/*"], 
       "@features/*": ["./src/features/*"],
+      "@mod/*": ["./src/assets/*"],
     },
     
     "target": "ES2020",
