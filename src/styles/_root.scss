@@ -11,7 +11,9 @@
 
     // borders
     --#{$prefix}border-width: 1px;
-    --#{$prefix}border-color: var(--#{$prefix}gray-300);
+    --#{$prefix}border-color: var(--#{$prefix}gray-200);
+    --#{$prefix}shadow-color: var(--#{$prefix}gray-200);
+    --#{$prefix}shadow-color-hover: var(--#{$prefix}gray-300);
 }
 
 :root[thank-you-for-saving-my-eyes='true'] {
@@ -26,5 +28,7 @@
     --#{$prefix}body-color-secondary: var(--#{$prefix}gray-800);
 
     // borders
-    --#{$prefix}border-color: var(--#{$prefix}gray-700);
+    --#{$prefix}border-color: var(--#{$prefix}gray-300);
+    --#{$prefix}shadow-color: var(--#{$prefix}gray-200);
+    --#{$prefix}shadow-color-hover: var(--#{$prefix}gray-300);
 }

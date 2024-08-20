@@ -1,0 +1,60 @@
+%poke-card {
+    padding: 1.2rem 2.4rem 2.4rem;
+    border: 1px solid var(--em-border-color);
+    border-radius: 1.2rem;
+    box-shadow: 0 0.4rem 0.8rem var(--em-shadow-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.6rem;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.1s;
+    text-decoration: none;
+    color: var(--em-body-color-primary);
+    backface-visibility: hidden;
+    -webkit-font-smoothing: subpixel-antialiased;
+
+    &:hover {
+        box-shadow: 0 0.4rem 0.8rem var(--em-shadow-color-hover);
+        transform: scale(1.02);
+        transition: transform 0.3s;
+    }
+
+    > .poke-img {
+        height: 15rem;
+        width: 15rem;
+        max-width: none;
+
+        &.skeleton {
+            background-color: var(--em-gray-700);
+            border-radius: 1.6rem;
+            animation-name: skeleton;
+            animation-duration: 1.5s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+    }
+}
+
+:root {
+    .poke-card {
+        @extend %poke-card;
+        background-color: var(--em-gray-100);
+    }
+}
+
+:root[thank-you-for-saving-my-eyes='true'] {
+    .poke-card {
+        @extend %poke-card;
+        background-color: var(--em-gray-100);
+    }
+}
+
+@keyframes skeleton {
+    to {
+        background-color: var(--em-gray-400);
+    }
+}
