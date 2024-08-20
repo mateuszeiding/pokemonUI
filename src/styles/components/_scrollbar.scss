@@ -10,10 +10,10 @@
     border: 0.2rem solid var(--em-body-bg);
     box-sizing: content-box;
     border-radius: 0.4rem;
-    background-color: #0080ff40;
+    background-color: var(--em-scrollbar-thumb-bg);
     opacity: 0.2;
 
     &:hover {
-        background-color: #0080ff60;
+        background-color: var(--em-scrollbar-thumb-bg-hover);
     }
 }

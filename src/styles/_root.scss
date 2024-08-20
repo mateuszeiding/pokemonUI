@@ -14,6 +14,9 @@
     --#{$prefix}border-color: var(--#{$prefix}gray-200);
     --#{$prefix}shadow-color: var(--#{$prefix}gray-200);
     --#{$prefix}shadow-color-hover: var(--#{$prefix}gray-300);
+
+    --#{$prefix}scrollbar-thumb-bg: #0080ff20;
+    --#{$prefix}scrollbar-thumb-bg-hover: #0080ff40;
 }
 
 :root[thank-you-for-saving-my-eyes='true'] {
@@ -31,4 +34,7 @@
     --#{$prefix}border-color: var(--#{$prefix}gray-300);
     --#{$prefix}shadow-color: var(--#{$prefix}gray-200);
     --#{$prefix}shadow-color-hover: var(--#{$prefix}gray-300);
+
+    --#{$prefix}scrollbar-thumb-bg: #0080ff40;
+    --#{$prefix}scrollbar-thumb-bg-hover: #0080ff60;
 }
