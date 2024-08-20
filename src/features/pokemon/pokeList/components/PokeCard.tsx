@@ -13,7 +13,10 @@ export default function PokeCard({ name, id }: Readonly<PokeCard>) {
             new Promise((resolve) => {
                 const img = new Image();
                 img.src = `src/assets/pokemon/${id}.svg`;
-                img.onload = () => resolve(img.src);
+                img.onload = () => {
+                    console.log('loaded', img.src);
+                    resolve(img.src);
+                };
             }),
         [id]
     );
