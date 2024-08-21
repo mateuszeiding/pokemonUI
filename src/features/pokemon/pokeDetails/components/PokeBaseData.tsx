@@ -1,7 +1,7 @@
 import { Pokemon } from 'pokenode-ts';
 import { useAsyncValue, useLocation } from 'react-router-dom';
 
-export default function PokeStats() {
+export default function PokeBaseData() {
     const pokemon = useAsyncValue() as Pokemon;
     const location = useLocation();
     const name = location.state.name as string;

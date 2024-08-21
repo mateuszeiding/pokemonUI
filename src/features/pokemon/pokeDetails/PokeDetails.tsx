@@ -1,7 +1,7 @@
 import { PokeData } from '@/services/loaders/pokeDetails.loader';
 import { Suspense } from 'react';
 import { Await, useLoaderData, useLocation } from 'react-router-dom';
-import PokeStats from './components/PokeBaseData';
+import PokeBaseData from './components/PokeBaseData';
 import PokeTypes from './components/PokeTypes';
 
 export default function PokeDetails() {
@@ -18,11 +18,9 @@ export default function PokeDetails() {
             <Await resolve={pokeData}>
                 {(pokeData: { data: PokeData }) => (
                     <>
-                        <div className='row'>
-                            <div className='col-5'>
+                        <div className='row pb-6'>
+                            <div className='col d-flex align-items-center g-col-8 justify-content-between'>
                                 <PokeTypes types={pokeData.data.types} />
-                            </div>
-                            <div className='col-7'>
                                 <h2 className='fs-8 tx-capitalize tx-right lh-sm'>
                                     {name}
                                 </h2>
@@ -31,7 +29,7 @@ export default function PokeDetails() {
                         <div className='row mb-6'>
                             <Suspense fallback={<div>Loading...</div>}>
                                 <Await resolve={pokeData.data.pokemon}>
-                                    <PokeStats />
+                                    <PokeBaseData />
                                 </Await>
                             </Suspense>
                         </div>

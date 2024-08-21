@@ -5,7 +5,7 @@ import { Fragment } from 'react/jsx-runtime';
 
 export default function PokeTypes({ types }: { types: Type[] }) {
     return (
-        <div className='d-flex g-3 flex-wrap pb-5'>
+        <div className='d-flex g-3 flex-wrap'>
             {types.map((type, index) => (
                 <Fragment key={index}>
                     <Suspense
