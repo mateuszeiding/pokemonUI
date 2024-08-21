@@ -14,7 +14,6 @@ export default function PokeCard({ name, id }: Readonly<PokeCard>) {
                 const img = new Image();
                 img.src = `/pokemon/${id}.svg`;
                 img.onload = () => {
-                    console.log('loaded', img.src);
                     resolve(img.src);
                 };
             }),
@@ -24,7 +23,8 @@ export default function PokeCard({ name, id }: Readonly<PokeCard>) {
     return (
         <NavLink
             to={id}
-            className='poke-card'>
+            className='poke-card'
+            state={{ name }}>
             <h3 className='tx-capitalize align-self-end fs-3 fw-regular'>
                 Nr {id}
             </h3>

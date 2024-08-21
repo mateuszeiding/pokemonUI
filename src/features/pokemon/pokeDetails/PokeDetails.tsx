@@ -1,25 +1,46 @@
-import { Pokemon } from 'pokenode-ts';
+import { PokeData } from '@/services/loaders/pokeDetails.loader';
 import { Suspense } from 'react';
-import { Await, useLoaderData, useParams } from 'react-router-dom';
+import { Await, useLoaderData, useLocation } from 'react-router-dom';
+import PokeStats from './components/PokeBaseData';
+import PokeTypes from './components/PokeTypes';
 
 export default function PokeDetails() {
-    const { id } = useParams<{ id: string }>();
-    const { pokeData } = useLoaderData() as Awaited<{ pokeData: Pokemon }>;
+    const { pokeData } = useLoaderData() as Awaited<{
+        pokeData: {
+            data: PokeData;
+        };
+    }>;
+    const location = useLocation();
+    const name = location.state.name as string;
 
     return (
-        <div>
-            <h1>PokeDetails: {id}</h1>
-            <Suspense fallback={<div>Loading...</div>}>
-                <Await resolve={pokeData}>
-                    {(pokeData: Pokemon) => (
-                        <div className='d-flex flex-column g-4'>
-                            {Object.keys(pokeData).map((key) => (
-                                <h2>{key}</h2>
-                            ))}
+        <Suspense fallback={<div>Loading...</div>}>
+            <Await resolve={pokeData}>
+                {(pokeData: { data: PokeData }) => (
+                    <>
+                        <div className='row'>
+                            <div className='col-5'>
+                                <PokeTypes types={pokeData.data.types} />
+                            </div>
+                            <div className='col-7'>
+                                <h2 className='fs-8 tx-capitalize tx-right lh-sm'>
+                                    {name}
+                                </h2>
+                            </div>
                         </div>
-                    )}
-                </Await>
-            </Suspense>
-        </div>
+                        <div className='row mb-6'>
+                            <Suspense fallback={<div>Loading...</div>}>
+                                <Await resolve={pokeData.data.pokemon}>
+                                    <PokeStats />
+                                </Await>
+                            </Suspense>
+                        </div>
+                        <div className='row mb-6'>
+                            <div className='col'></div>
+                        </div>
+                    </>
+                )}
+            </Await>
+        </Suspense>
     );
 }

@@ -42,12 +42,19 @@ export default function PokeList() {
     }, [fetchPokemons]);
 
     useEffect(() => {
+        if (listRef.current) {
+            const { clientHeight, scrollHeight } = listRef.current;
+            if (scrollHeight <= clientHeight + 100) {
+                fetchPokemons(pokemons.results.length + 2);
+            }
+        }
         const handleScroll = () => {
             if (!listRef.current) return;
             const { scrollTop, clientHeight, scrollHeight } = listRef.current;
-
-            if (scrollTop + clientHeight >= scrollHeight - 300) {
-                console.log('fetching more pokemons');
+            if (
+                scrollTop + clientHeight >= scrollHeight - 300 ||
+                scrollHeight <= clientHeight
+            ) {
                 fetchPokemons(pokemons.results.length + 2);
             }
         };
@@ -69,7 +76,7 @@ export default function PokeList() {
                 <div className='row d-flex g-6 pb-3'>
                     {pokemons?.results.map((pokemon) => (
                         <div
-                            className='col'
+                            className='col flex-0'
                             key={pokemon.name}>
                             <PokeCard
                                 id={pokemon.url.split('/').slice(-2)[0]}
