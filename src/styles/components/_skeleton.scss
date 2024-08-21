@@ -1,0 +1,12 @@
+.skeleton {
+    animation-name: spooky-skeleton-dancing-in-the-dark;
+    animation-duration: 300ms;
+    animation-direction: alternate;
+    background-color: var(--#{$prefix}gray-400);
+}
+
+@keyframes spooky-skeleton-dancing-in-the-dark {
+    to {
+        background-color: var(--#{$prefix}gray-500);
+    }
+}

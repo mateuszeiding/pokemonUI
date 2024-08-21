@@ -72,7 +72,7 @@ export default function PokeList() {
         <div className='row h-100'>
             <div
                 ref={listRef}
-                className='col-7 overflow-y-scroll overflow-x-hidden h-100'>
+                className='col-7 overflow-y-scroll overflow-x-hidden h-100 pt-6'>
                 <div className='row d-flex g-6 pb-3'>
                     {pokemons?.results.map((pokemon) => (
                         <div
@@ -86,7 +86,7 @@ export default function PokeList() {
                     ))}
                 </div>
             </div>
-            <div className='col-5'>
+            <div className='col-5 border-left pt-6'>
                 <Outlet />
             </div>
         </div>

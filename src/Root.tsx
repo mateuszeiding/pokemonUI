@@ -11,7 +11,7 @@ export default function Root() {
                 <aside className='grid-menu'>
                     <NavMenu />
                 </aside>
-                <section className='container-fluid p-6 pb-9 overflow-hidden h-100'>
+                <section className='container-fluid pb-9 overflow-hidden h-100'>
                     <Outlet />
                 </section>
             </main>

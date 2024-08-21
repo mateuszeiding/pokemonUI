@@ -4,16 +4,21 @@ import { Await } from 'react-router-dom';
 import { Fragment } from 'react/jsx-runtime';
 
 export default function PokeTypes({ types }: { types: Type[] }) {
-    console.log(types[0]);
     return (
         <div className='d-flex g-3 flex-wrap pb-5'>
             {types.map((type, index) => (
                 <Fragment key={index}>
-                    <Suspense fallback={<div>Loading...</div>}>
+                    <Suspense
+                        fallback={
+                            <div
+                                className='skeleton'
+                                style={{ height: 20, width: 90 }}></div>
+                        }>
                         <Await resolve={type}>
                             {(type: Type) => (
                                 <img
                                     height={20}
+                                    width={90}
                                     src={
                                         type.sprites['generation-viii'][
                                             'sword-shield'
