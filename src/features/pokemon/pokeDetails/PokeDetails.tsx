@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import { Await, useLoaderData, useLocation } from 'react-router-dom';
 import PokeBaseData from './components/PokeBaseData';
 import PokeTypes from './components/PokeTypes';
+import './PokeDetails.scss';
 
 export default function PokeDetails() {
     const { pokeData } = useLoaderData() as Awaited<{
@@ -14,7 +15,7 @@ export default function PokeDetails() {
     const name = location.state.name as string;
 
     return (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div className='page-skeleton'></div>}>
             <Await resolve={pokeData}>
                 {(pokeData: { data: PokeData }) => (
                     <>

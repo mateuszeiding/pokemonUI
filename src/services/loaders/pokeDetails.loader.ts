@@ -7,15 +7,14 @@ export type PokeData = {
     types: (Type & { sprites: VersionSprites })[];
 };
 
-export async function pokeDetailsHeaderLoader({ params }: LoaderFunctionArgs) {
-    const pokeData = await PokeAPI.getPokemonById(Number(params.id)).then(
-        (res) =>
-            defer({
-                pokemon: res,
-                types: res.types.map((type) =>
-                    PokeAPI.getTypeByName(type.type.name)
-                ),
-            })
+export async function pokeDetailsLoader({ params }: LoaderFunctionArgs) {
+    const pokeData = PokeAPI.getPokemonById(Number(params.id)).then((res) =>
+        defer({
+            pokemon: res,
+            types: res.types.map((type) =>
+                PokeAPI.getTypeByName(type.type.name)
+            ),
+        })
     );
     return defer({
         pokeData: pokeData,

@@ -1,0 +1,24 @@
+.page-skeleton {
+    position: absolute;
+    height: 60vh;
+    top: calc(0vh - 100vh);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        var(--em-skeleton-wave-rgba-not-center) 0vh,
+        var(--em-skeleton-wave-rgba-center) 30vh,
+        var(--em-skeleton-wave-rgba-center) 40vh,
+        var(--em-skeleton-wave-rgba-not-center) 70vh
+    );
+    animation-name: waveAnimation;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes waveAnimation {
+    to {
+        top: calc(100vh + 70vh);
+    }
+}

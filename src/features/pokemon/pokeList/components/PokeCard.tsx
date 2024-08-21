@@ -24,7 +24,8 @@ export default function PokeCard({ name, id }: Readonly<PokeCard>) {
         <NavLink
             to={id}
             className='poke-card'
-            state={{ name }}>
+            state={{ name }}
+            replace>
             <h3 className='tx-capitalize align-self-end fs-3 fw-regular'>
                 Nr {id}
             </h3>

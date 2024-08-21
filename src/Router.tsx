@@ -1,13 +1,9 @@
-import {
-    createBrowserRouter,
-    RouterProvider,
-    useParams,
-} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Root from '@/Root';
 import PokeList from '@/features/pokemon/pokeList/PokeList';
 import PokeDetails from './features/pokemon/pokeDetails/PokeDetails';
-import { pokeDetailsHeaderLoader } from './services/loaders/pokeDetails.loader';
+import { pokeDetailsLoader } from './services/loaders/pokeDetails.loader';
 
 export default function Router() {
     const router = createBrowserRouter([
@@ -21,8 +17,8 @@ export default function Router() {
                     children: [
                         {
                             path: ':id',
-                            element: <PokeDetailsWrapper />,
-                            loader: pokeDetailsHeaderLoader,
+                            element: <PokeDetails />,
+                            loader: pokeDetailsLoader,
                         },
                     ],
                 },
@@ -39,9 +35,4 @@ export default function Router() {
     ]);
 
     return <RouterProvider router={router} />;
-}
-
-function PokeDetailsWrapper() {
-    const { id } = useParams();
-    return <PokeDetails key={id} />;
 }

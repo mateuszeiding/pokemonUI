@@ -86,7 +86,7 @@ export default function PokeList() {
                     ))}
                 </div>
             </div>
-            <div className='col-5 border-left pt-6'>
+            <div className='col-5 border-left pt-6 p-relative'>
                 <Outlet />
             </div>
         </div>

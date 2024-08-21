@@ -19,6 +19,9 @@
 
     --#{$prefix}scrollbar-thumb-bg: #0080ff20;
     --#{$prefix}scrollbar-thumb-bg-hover: #0080ff40;
+
+    --#{$prefix}skeleton-wave-rgba-center: rgba(140, 140, 170, 0.9);
+    --#{$prefix}skeleton-wave-rgba-not-center: rgba(168, 168, 200, 0);
 }
 
 :root[thank-you-for-saving-my-eyes='true'] {
@@ -41,4 +44,7 @@
 
     --#{$prefix}scrollbar-thumb-bg: #0080ff40;
     --#{$prefix}scrollbar-thumb-bg-hover: #0080ff60;
+
+    --#{$prefix}skeleton-wave-rgba-center: rgba(23, 23, 37, 0.2);
+    --#{$prefix}skeleton-wave-rgba-not-center: rgba(32, 32, 58, 0);
 }
