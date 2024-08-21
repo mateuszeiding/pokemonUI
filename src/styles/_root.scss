@@ -12,6 +12,8 @@
     // borders
     --#{$prefix}border-width: 1px;
     --#{$prefix}border-color: var(--#{$prefix}gray-200);
+    --#{$prefix}border-color-light: var(--#{$prefix}gray-400);
+    --#{$prefix}border-color-light-hover: var(--#{$prefix}gray-500);
     --#{$prefix}shadow-color: var(--#{$prefix}gray-200);
     --#{$prefix}shadow-color-hover: var(--#{$prefix}gray-300);
 
@@ -32,6 +34,8 @@
 
     // borders
     --#{$prefix}border-color: var(--#{$prefix}gray-300);
+    --#{$prefix}border-color-light: var(--#{$prefix}gray-500);
+    --#{$prefix}border-color-light-hover: var(--#{$prefix}gray-600);
     --#{$prefix}shadow-color: var(--#{$prefix}gray-200);
     --#{$prefix}shadow-color-hover: var(--#{$prefix}gray-300);
 

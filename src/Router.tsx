@@ -26,6 +26,14 @@ export default function Router() {
                         },
                     ],
                 },
+                {
+                    path: 'types',
+                    element: <div>PLease stand by.</div>,
+                },
+                {
+                    path: 'pizza',
+                    element: <div>It isn't pizza time yet! 😡</div>,
+                },
             ],
         },
     ]);
