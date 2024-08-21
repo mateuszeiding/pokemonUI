@@ -28,6 +28,7 @@
     }
 
     &-link {
+        color: var(--#{$prefix}body-color-secondary);
         text-decoration: none;
     }
 

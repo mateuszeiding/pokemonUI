@@ -1,59 +1,59 @@
 :root {
-    @each $key, $value in $spacer {
+    @each $key, $value in $spacers {
         .m-#{$key} {
-            margin: $value;
+            margin: #{$value}rem;
         }
         .mt-#{$key} {
-            margin-top: $value;
+            margin-top: #{$value}rem;
         }
         .mr-#{$key} {
-            margin-right: $value;
+            margin-right: #{$value}rem;
         }
         .mb-#{$key} {
-            margin-bottom: $value;
+            margin-bottom: #{$value}rem;
         }
         .ml-#{$key} {
-            margin-left: $value;
+            margin-left: #{$value}rem;
         }
         .mx-#{$key} {
-            margin-left: $value;
-            margin-right: $value;
+            margin-left: #{$value}rem;
+            margin-right: #{$value}rem;
         }
         .my-#{$key} {
-            margin-top: $value;
-            margin-bottom: $value;
+            margin-top: #{$value}rem;
+            margin-bottom: #{$value}rem;
         }
         .p-#{$key} {
-            padding: $value;
+            padding: #{$value}rem;
         }
         .pt-#{$key} {
-            padding-top: $value;
+            padding-top: #{$value}rem;
         }
         .pr-#{$key} {
-            padding-right: $value;
+            padding-right: #{$value}rem;
         }
         .pb-#{$key} {
-            padding-bottom: $value;
+            padding-bottom: #{$value}rem;
         }
         .pl-#{$key} {
-            padding-left: $value;
+            padding-left: #{$value}rem;
         }
         .px-#{$key} {
-            padding-left: $value;
-            padding-right: $value;
+            padding-left: #{$value}rem;
+            padding-right: #{$value}rem;
         }
         .py-#{$key} {
-            padding-top: $value;
-            padding-bottom: $value;
+            padding-top: #{$value}rem;
+            padding-bottom: #{$value}rem;
         }
         .g-#{$key} {
-            gap: $value;
+            gap: #{$value}rem;
         }
         .g-col-#{$key} {
-            column-gap: $value;
+            column-gap: #{$value}rem;
         }
         .g-row-#{$key} {
-            row-gap: $value;
+            row-gap: #{#{$value}rem}rem;
         }
     }
 }
