@@ -24,11 +24,11 @@
         border-color: var(--#{$prefix}border-color-light-hover);
         box-shadow:
             0 0.6rem var(--#{$prefix}border-color-light),
-            0 1rem rgba(0, 0, 0, 0.4);
+            0 0.8rem rgba(0, 0, 0, 0.4);
     }
 
     &:active {
-        top: 0.2rem;
+        top: 0.4rem;
     }
 
     &:focus-visible {
@@ -42,6 +42,7 @@
     }
 
     &.active {
+        top: 0.4rem;
         border-color: var(--#{$prefix}gray-700);
         box-shadow:
             0 0.6rem var(--#{$prefix}gray-600),
