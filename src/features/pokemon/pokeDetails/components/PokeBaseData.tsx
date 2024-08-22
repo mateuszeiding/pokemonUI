@@ -10,7 +10,7 @@ export default function PokeBaseData() {
 
     return (
         <>
-            <div className='col-5 d-flex flex-column g-row-3 justify-content-end'>
+            <div className='col-5 d-flex flex-column g-row-3 pt-6'>
                 {pokemon.stats.map((stat) => (
                     <div
                         key={stat.stat.name}

@@ -18,7 +18,7 @@ export default function PokeDetails() {
         <Suspense fallback={<div className='page-skeleton'></div>}>
             <Await resolve={pokeData}>
                 {(pokeData: { data: PokeData }) => (
-                    <>
+                    <div style={{ maxWidth: '700px' }}>
                         <div className='row pb-5'>
                             <div className='col d-flex align-items-center g-col-8 justify-content-between'>
                                 <PokeTypes types={pokeData.data.types} />
@@ -37,7 +37,7 @@ export default function PokeDetails() {
                         <div className='row mb-6'>
                             <div className='col'></div>
                         </div>
-                    </>
+                    </div>
                 )}
             </Await>
         </Suspense>
