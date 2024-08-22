@@ -1,12 +1,33 @@
 .skeleton {
-    animation-name: spooky-skeleton-dancing-in-the-dark;
-    animation-duration: 300ms;
-    animation-direction: alternate;
+    position: relative;
     background-color: var(--#{$prefix}gray-400);
+    overflow: hidden;
+
+    &::after {
+        top: 0;
+        left: -120%;
+        right: 120%;
+        bottom: 0;
+        content: '';
+        position: absolute;
+        animation-duration: 1000ms;
+        animation-name: spooky-skeleton-dancing-in-the-dark;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        background: linear-gradient(
+            to right,
+            var(--#{$prefix}gray-400) 00%,
+            var(--#{$prefix}gray-500) 45%,
+            var(--#{$prefix}gray-500) 55%,
+            var(--#{$prefix}gray-400) 100%
+        );
+        opacity: 0.4;
+    }
 }
 
 @keyframes spooky-skeleton-dancing-in-the-dark {
     to {
-        background-color: var(--#{$prefix}gray-500);
+        left: 120%;
+        right: -120%;
     }
 }

@@ -1,0 +1,8 @@
+:root {
+    @each $key, $value in $spacers {
+        @debug r-#{$key};
+        .r-#{$key} {
+            border-radius: #{$value}rem;
+        }
+    }
+}

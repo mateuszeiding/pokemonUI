@@ -19,7 +19,7 @@ export default function PokeDetails() {
             <Await resolve={pokeData}>
                 {(pokeData: { data: PokeData }) => (
                     <>
-                        <div className='row pb-6'>
+                        <div className='row pb-5'>
                             <div className='col d-flex align-items-center g-col-8 justify-content-between'>
                                 <PokeTypes types={pokeData.data.types} />
                                 <h2 className='fs-8 tx-capitalize tx-right lh-sm'>

@@ -1,6 +1,7 @@
 import { Suspense, useMemo } from 'react';
 import './PokeCard.scss';
 import { Await, NavLink } from 'react-router-dom';
+import { imageSourcePromise } from '@/utils/imageSourcePromise';
 
 type PokeCard = {
     name: string;
@@ -8,17 +9,7 @@ type PokeCard = {
 };
 
 export default function PokeCard({ name, id }: Readonly<PokeCard>) {
-    const image = useMemo(
-        () =>
-            new Promise<string>((resolve) => {
-                const img = new Image();
-                img.src = `/pokemon/${id}.svg`;
-                img.onload = () => {
-                    resolve(img.src);
-                };
-            }),
-        [id]
-    );
+    const src = useMemo(() => imageSourcePromise(`/pokemon/${id}.svg`), [id]);
 
     return (
         <NavLink
@@ -30,8 +21,8 @@ export default function PokeCard({ name, id }: Readonly<PokeCard>) {
                 Nr {id}
             </h3>
             <h2 className='tx-capitalize'>{name}</h2>
-            <Suspense fallback={<div className='poke-img skeleton'></div>}>
-                <Await resolve={image}>
+            <Suspense fallback={<div className='poke-img skeleton r-4'></div>}>
+                <Await resolve={src}>
                     {(src: string) => (
                         <img
                             className='poke-img'

@@ -1,5 +1,7 @@
+import { imageSourcePromise } from '@/utils/imageSourcePromise';
 import { Pokemon } from 'pokenode-ts';
-import { useAsyncValue, useLocation } from 'react-router-dom';
+import { Suspense } from 'react';
+import { Await, useAsyncValue, useLocation } from 'react-router-dom';
 
 export default function PokeBaseData() {
     const pokemon = useAsyncValue() as Pokemon;
@@ -8,7 +10,7 @@ export default function PokeBaseData() {
 
     return (
         <>
-            <div className='col-5 d-flex flex-column g-row-3'>
+            <div className='col-5 d-flex flex-column g-row-3 justify-content-end'>
                 {pokemon.stats.map((stat) => (
                     <div
                         key={stat.stat.name}
@@ -19,13 +21,23 @@ export default function PokeBaseData() {
                 ))}
             </div>
             <div className='col-7'>
-                <img
-                    src={
-                        pokemon.sprites.other?.['official-artwork']
-                            .front_default ?? undefined
-                    }
-                    alt={name}
-                />
+                <Suspense
+                    fallback={<div className='skeleton poke-img r-5'></div>}>
+                    <Await
+                        resolve={imageSourcePromise(
+                            pokemon.sprites.other?.['official-artwork']
+                                .front_default ?? ''
+                        )}>
+                        {(src: string) => (
+                            <img
+                                className='poke-img'
+                                src={src}
+                                alt={name}
+                            />
+                        )}
+                    </Await>
+                </Suspense>
+
                 <div className='tx-center'>
                     <h3>Weight: {pokemon.weight / 10}kg</h3>
                     <h3>Height: {pokemon.height / 10}m</h3>
