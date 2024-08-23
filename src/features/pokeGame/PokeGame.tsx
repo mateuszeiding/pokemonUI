@@ -14,6 +14,12 @@ enum Result {
     LOSE = 'lose',
 }
 
+function getRandomInt(min: number, max: number) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 export default function PokeGame() {
     const [number, setNumber] = useState<number | null>(null);
     const [name, setName] = useState<string | null>(null);
@@ -64,12 +70,12 @@ export default function PokeGame() {
             setShowPokemon(false);
             setShowGame(false);
             setResult(null);
-            setNumber(Math.floor(Math.random() * 100));
+            setNumber(getRandomInt(0, 649));
         }, 3500);
     };
 
     useEffect(() => {
-        setNumber(Math.floor(Math.random() * 100));
+        setNumber(getRandomInt(0, 649));
     }, [imageStore]);
 
     return showGame ? (
@@ -79,6 +85,7 @@ export default function PokeGame() {
                     className='name-input'
                     placeholder='Who`s that Pokemon?'
                     onKeyDown={(e) => e.key === 'Enter' && checkPokemonName(e)}
+                    disabled={showPokemon}
                 />
                 <img
                     src={questionmark}
