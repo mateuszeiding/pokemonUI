@@ -3,9 +3,10 @@
     flex-direction: row;
     height: 100%;
 
-    --#{$prefix}menu-widht: 28rem;
+    --#{$prefix}menu-widht: 24rem;
 
     .grid-menu {
+        min-width: var(--#{$prefix}menu-widht);
         width: var(--#{$prefix}menu-widht);
         background-color: var(--#{$prefix}gray-100);
         padding: 1.6rem;

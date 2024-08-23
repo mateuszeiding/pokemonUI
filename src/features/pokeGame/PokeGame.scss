@@ -1,0 +1,149 @@
+.pokeball-wrapper {
+    height: 24rem;
+    margin: 6.4rem 0;
+}
+
+.game-ball {
+    background-color: transparent;
+    border-radius: 50rem;
+    cursor: pointer;
+    border: none;
+
+    &:hover {
+        animation-name: pokeball-dance;
+        transform: rotate(0deg);
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+        transform-origin: 50% 80%;
+    }
+}
+
+.poke-frame {
+    width: 20.6rem;
+    height: 24rem;
+    position: relative;
+}
+
+.poke-mask {
+    background-color: var(--em-body-color-primary);
+    animation-name: mask-render;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in;
+    mask-size: 80%;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    opacity: 1;
+    height: 24rem;
+    transition: opacity 0.5s;
+
+    &.hide {
+        opacity: 0;
+    }
+
+    &-skeleton {
+        @extend .poke-mask;
+        background-color: transparent;
+    }
+}
+.poke-mask-img {
+    top: 10%;
+    left: 10%;
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    opacity: 0;
+    transition: opacity 0.5s;
+
+    &.show {
+        opacity: 1;
+    }
+}
+
+.game-result {
+    padding: 2.4rem;
+    width: 80%;
+    left: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 40rem;
+    position: absolute;
+
+    &.win {
+        background-color: green;
+    }
+
+    &.lose {
+        background-color: red;
+    }
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.name-input {
+    line-height: 2rem;
+    width: 100%;
+    padding: 1.2rem 0.8rem;
+    border: 1px solid var(--em-gray-700);
+    border-right: none;
+    border-top-left-radius: 0.4rem;
+    border-bottom-left-radius: 0.4rem;
+    font-size: 1.4rem;
+    color: var(--em-body-color-primary);
+    background-color: var(--em-gray-300);
+    outline: none;
+    margin-bottom: 1.8rem;
+
+    &::placeholder {
+        color: var(--em-body-color-secondary);
+    }
+}
+
+.questionmark {
+    border: 1px solid var(--em-gray-700);
+    border-left: none;
+    border-top-right-radius: 0.4rem;
+    border-bottom-right-radius: 0.4rem;
+    background-color: var(--em-gray-300);
+    background-image: url('');
+    background-size: cover;
+    padding: 1.2rem 0.8rem;
+    height: 4.6rem;
+}
+
+@keyframes pokeball-dance {
+    4% {
+        transform: rotate(0deg);
+    }
+    8% {
+        transform: rotate(5deg);
+    }
+    12% {
+        transform: rotate(0deg);
+    }
+    16% {
+        transform: rotate(-8deg);
+    }
+    20% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(10deg);
+    }
+    30% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes mask-render {
+    0% {
+        mask-size: 30%;
+    }
+
+    100% {
+        mask-size: 80%;
+    }
+}
