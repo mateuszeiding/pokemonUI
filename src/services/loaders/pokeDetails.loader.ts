@@ -1,10 +1,11 @@
 import { defer, LoaderFunctionArgs } from 'react-router-dom';
 import PokeAPI from '../Poke.API';
-import { Pokemon, Type, VersionSprites } from 'pokenode-ts';
+import { Pokemon, Type, VersionSprites, Ability } from 'pokenode-ts';
 
 export type PokeData = {
     pokemon: Pokemon;
     types: (Type & { sprites: VersionSprites })[];
+    abilities: Ability[];
 };
 
 export async function pokeDetailsLoader({ params }: LoaderFunctionArgs) {
@@ -13,6 +14,9 @@ export async function pokeDetailsLoader({ params }: LoaderFunctionArgs) {
             pokemon: res,
             types: res.types.map((type) =>
                 PokeAPI.getTypeByName(type.type.name)
+            ),
+            abilities: res.abilities.map((ability) =>
+                PokeAPI.getAbilityByName(ability.ability.name)
             ),
         })
     );

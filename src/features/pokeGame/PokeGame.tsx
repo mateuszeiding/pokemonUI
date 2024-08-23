@@ -57,7 +57,6 @@ export default function PokeGame() {
         );
     }, [number]);
 
-    console.log(name);
     const checkPokemonName = async (e: KeyboardEvent<HTMLInputElement>) => {
         setShowPokemon(true);
         if (e.currentTarget.value.toLowerCase() === name) {

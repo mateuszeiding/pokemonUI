@@ -4,6 +4,7 @@ import { Await, useLoaderData, useLocation } from 'react-router-dom';
 import PokeBaseData from './components/PokeBaseData';
 import PokeTypes from './components/PokeTypes';
 import './PokeDetails.scss';
+import PokeAbilities from './components/PokeAbilities';
 
 export default function PokeDetails() {
     const { pokeData } = useLoaderData() as Awaited<{
@@ -35,7 +36,11 @@ export default function PokeDetails() {
                             </Suspense>
                         </div>
                         <div className='row mb-6'>
-                            <div className='col'></div>
+                            <div className='col'>
+                                <PokeAbilities
+                                    abilities={pokeData.data.abilities}
+                                />
+                            </div>
                         </div>
                     </div>
                 )}
