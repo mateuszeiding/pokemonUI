@@ -58,32 +58,32 @@
         &.top {
             margin-top: -0.8rem;
             top: 0;
-            left: var(--em-light-position);
+            --em-light-position: 13%;
             --em-border-color: var(--em-gray-800);
 
             &.first {
-                --em-light-position: 63%;
+                right: var(--em-light-position);
             }
 
             &.second {
-                --em-light-position: 72%;
+                right: calc(var(--em-light-position) + 2.4rem);
             }
 
             &.third {
-                --em-light-position: 81%;
+                right: calc(var(--em-light-position) + 4.8rem);
             }
         }
         &.bottom {
             bottom: 0;
-            left: var(--em-light-position);
             --em-border-color: var(--em-gray-600);
+            --em-light-position: 32%;
 
             &.first {
-                --em-light-position: 46%;
+                right: var(--em-light-position);
             }
 
             &.second {
-                --em-light-position: 55%;
+                right: calc(var(--em-light-position) + 2.4rem);
             }
         }
 

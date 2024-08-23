@@ -12,8 +12,8 @@ export default function PokeAbilities({ abilities }: { abilities: Ability[] }) {
                     <Suspense
                         fallback={
                             <div
-                                className='skeleton'
-                                style={{ height: 20, width: 90 }}></div>
+                                className='skeleton r-4'
+                                style={{ height: 120, width: '100%' }}></div>
                         }>
                         <Await resolve={ability}>
                             <PokeAbility />
