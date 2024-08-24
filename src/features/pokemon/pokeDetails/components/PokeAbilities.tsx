@@ -4,16 +4,13 @@ import { Await, useAsyncValue } from 'react-router-dom';
 import { Fragment } from 'react/jsx-runtime';
 
 export default function PokeAbilities({ abilities }: { abilities: Ability[] }) {
-    console.log(abilities);
     return (
-        <div className='d-flex flex-column g-3 flex-wrap'>
+        <div className='col d-flex flex-column g-row-3 flex-wrap'>
             {abilities.map((ability, index) => (
                 <Fragment key={index}>
                     <Suspense
                         fallback={
-                            <div
-                                className='skeleton r-4'
-                                style={{ height: 120, width: '100%' }}></div>
+                            <div className='skeleton poke-ability-skeleton r-4'></div>
                         }>
                         <Await resolve={ability}>
                             <PokeAbility />
@@ -44,7 +41,7 @@ function PokeAbility() {
             </div>
 
             <div className='tx-capitalize fs-6 fw-bold'>{ability.name}</div>
-            <div>
+            <div className='fw-light'>
                 {
                     ability.effect_entries.find(
                         (ab) => ab.language.name === 'en'

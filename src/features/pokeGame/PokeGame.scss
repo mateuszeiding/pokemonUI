@@ -28,7 +28,7 @@
 .poke-mask {
     background-color: var(--em-body-color-primary);
     animation-name: mask-render;
-    animation-duration: 500ms;
+    animation-duration: 300ms;
     animation-timing-function: ease-in;
     mask-size: 80%;
     mask-repeat: no-repeat;
@@ -69,12 +69,37 @@
     border-radius: 40rem;
     position: absolute;
 
+    &:not(.hidden) {
+        animation-name: result-blink;
+        animation-duration: 400ms;
+        animation-timing-function: ease-in-out; /* Optional: Add a timing function */
+        animation-iteration-count: 2;
+    }
+
     &.win {
         background-color: green;
     }
 
     &.lose {
         background-color: red;
+    }
+}
+
+@keyframes result-blink {
+    0% {
+        left: 10%;
+        width: 80%;
+    }
+
+    50% {
+        left: 15%;
+
+        width: 70%;
+    }
+
+    100% {
+        left: 10%;
+        width: 80%;
     }
 }
 
@@ -140,7 +165,7 @@
 
 @keyframes mask-render {
     0% {
-        mask-size: 30%;
+        mask-size: 10%;
     }
 
     100% {

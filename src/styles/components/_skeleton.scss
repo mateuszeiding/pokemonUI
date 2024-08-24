@@ -23,6 +23,12 @@
         );
         opacity: 0.4;
     }
+
+    &-text {
+        color: transparent;
+        speak: none;
+        display: inline-table;
+    }
 }
 
 @keyframes spooky-skeleton-dancing-in-the-dark {

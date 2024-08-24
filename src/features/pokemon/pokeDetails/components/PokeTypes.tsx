@@ -1,10 +1,14 @@
+import { PokeData } from '@/services/loaders/pokeDetails.loader';
 import { imageSourcePromise } from '@/utils/imageSourcePromise';
 import { Type } from 'pokenode-ts';
 import { Suspense } from 'react';
-import { Await } from 'react-router-dom';
+import { Await, useAsyncValue } from 'react-router-dom';
 import { Fragment } from 'react/jsx-runtime';
 
-export default function PokeTypes({ types }: { types: Type[] }) {
+export default function PokeTypes() {
+    const { data } = useAsyncValue() as { data: PokeData };
+    const types = data.types;
+
     return (
         <div className='d-flex g-3 flex-wrap'>
             {types.map((type, index) => (

@@ -33,11 +33,14 @@
     display: flex;
     flex-direction: column;
     row-gap: 0.8rem;
-    margin: 0.5rem;
     padding: 1.2rem;
     border-radius: 0.8rem;
     background-color: var(--em-gray-100);
     border: 1.2rem solid var(--em-gray-200);
+
+    &-skeleton {
+        height: 2.4rem + 2rem + calc(calc(1.5 * 1.6rem) * 3) + 2.4rem + 0.8rem;
+    }
 
     &-frame {
         position: absolute;
@@ -99,7 +102,7 @@
             border: 0.8rem solid transparent;
             border-bottom: 0;
             border-top: 0.8rem solid var(--em-border-color);
-            left: calc(var(--em-light-position) + 0.8rem);
+            left: calc(var(--em-light-position) + 0.7rem);
         }
     }
 }

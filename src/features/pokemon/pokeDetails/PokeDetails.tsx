@@ -16,35 +16,41 @@ export default function PokeDetails() {
     const name = location.state.name as string;
 
     return (
-        <Suspense fallback={<div className='page-skeleton'></div>}>
-            <Await resolve={pokeData}>
-                {(pokeData: { data: PokeData }) => (
-                    <div style={{ maxWidth: '700px' }}>
-                        <div className='row pb-5'>
-                            <div className='col d-flex align-items-center g-col-8 justify-content-between'>
-                                <PokeTypes types={pokeData.data.types} />
-                                <h2 className='fs-8 tx-capitalize tx-right lh-sm'>
-                                    {name}
-                                </h2>
-                            </div>
-                        </div>
-                        <div className='row mb-6'>
-                            <Suspense fallback={<div>Loading...</div>}>
-                                <Await resolve={pokeData.data.pokemon}>
-                                    <PokeBaseData />
-                                </Await>
-                            </Suspense>
-                        </div>
-                        <div className='row mb-6'>
-                            <div className='col'>
-                                <PokeAbilities
-                                    abilities={pokeData.data.abilities}
-                                />
-                            </div>
-                        </div>
-                    </div>
-                )}
-            </Await>
-        </Suspense>
+        <div style={{ maxWidth: '700px' }}>
+            <div className='row pb-5'>
+                <div className='col d-flex align-items-center g-col-8 justify-content-between'>
+                    <Suspense
+                        fallback={
+                            <div
+                                className='skeleton'
+                                style={{
+                                    height: 20,
+                                    width: 90,
+                                }}></div>
+                        }>
+                        <Await resolve={pokeData}>
+                            <PokeTypes />
+                        </Await>
+                    </Suspense>
+                    <h2 className='fs-8 tx-capitalize tx-right lh-sm'>
+                        {name}
+                    </h2>
+                </div>
+            </div>
+            <div className='row mb-6'>
+                <PokeBaseData pokeData={pokeData} />
+            </div>
+            <div className='row mb-6'>
+                <Suspense>
+                    <Await resolve={pokeData}>
+                        {(pokeData: { data: PokeData }) => (
+                            <PokeAbilities
+                                abilities={pokeData.data.abilities}
+                            />
+                        )}
+                    </Await>
+                </Suspense>
+            </div>
+        </div>
     );
 }
