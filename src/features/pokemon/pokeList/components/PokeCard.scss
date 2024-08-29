@@ -1,4 +1,4 @@
-%poke-card {
+.poke-card {
     padding: 1.2rem 2.4rem 2.4rem;
     border: 1px solid var(--em-border-color);
     border-radius: 1.2rem;
@@ -16,11 +16,20 @@
     color: var(--em-body-color-primary);
     backface-visibility: hidden;
     -webkit-font-smoothing: subpixel-antialiased;
+    background-color: var(--em-gray-100);
 
     &:hover {
         box-shadow: 0 0.4rem 0.8rem var(--em-shadow-color-hover);
         transform: scale(1.02);
         transition: transform 0.3s;
+    }
+
+    &.active {
+        padding: 1rem 2.2rem 2.2rem;
+        border: 3px solid var(--em-shadow-color-hover);
+        transform: scale(1.04);
+        filter: saturate(1.2) contrast(1.1);
+        transition: all 0.3s;
     }
 
     > .poke-img {
@@ -36,20 +45,6 @@
             animation-iteration-count: infinite;
             animation-direction: alternate;
         }
-    }
-}
-
-:root {
-    .poke-card {
-        @extend %poke-card;
-        background-color: var(--em-gray-100);
-    }
-}
-
-:root[thank-you-for-saving-my-eyes='true'] {
-    .poke-card {
-        @extend %poke-card;
-        background-color: var(--em-gray-100);
     }
 }
 
