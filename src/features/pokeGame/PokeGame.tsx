@@ -8,6 +8,7 @@ import pokeball from '/icon.png';
 import PokeAPI from '@/services/Poke.API';
 import happy from '/pika_happy.png';
 import angry from '/pika_angry.png';
+import who from '/who.png';
 
 enum Result {
     WIN = 'win',
@@ -26,24 +27,6 @@ export default function PokeGame() {
     const [showPokemon, setShowPokemon] = useState<boolean>(false);
     const [showGame, setShowGame] = useState<boolean>(false);
     const [result, setResult] = useState<Result | null>(null);
-    const imageStore = useMemo(() => {
-        const imageMap = new Map();
-        const pokeballImg = (new Image().src = pokeball);
-        const happyImg = (new Image().src = happy);
-        const angryImg = (new Image().src = angry);
-
-        imageMap.set('pokeball', pokeballImg);
-        imageMap.set('happy', happyImg);
-        imageMap.set('angry', angryImg);
-        return {
-            get(src: string) {
-                return imageMap.get(src);
-            },
-            set(src: string, image: HTMLImageElement) {
-                imageMap.set(src, image);
-            },
-        };
-    }, []);
 
     const src = useMemo(
         () => number && imageSourcePromise(`/pokemon/${number}.svg`),
@@ -75,7 +58,7 @@ export default function PokeGame() {
 
     useEffect(() => {
         setNumber(getRandomInt(0, 649));
-    }, [imageStore]);
+    }, []);
 
     return showGame ? (
         <div className='mb-9'>
@@ -91,7 +74,13 @@ export default function PokeGame() {
                     className='questionmark'></img>
             </div>
             <div className='poke-frame'>
-                <Suspense fallback={<div className='poke-mask-skeleton'></div>}>
+                <Suspense
+                    fallback={
+                        <img
+                            src={who}
+                            className='poke-mask-skeleton'
+                        />
+                    }>
                     <Await resolve={src}>
                         {(src: string) => (
                             <PokeMask
@@ -102,13 +91,7 @@ export default function PokeGame() {
                     </Await>
                 </Suspense>
                 <div className={['game-result', result ?? 'hidden'].join(' ')}>
-                    <img
-                        src={
-                            result === Result.WIN
-                                ? imageStore.get('happy')
-                                : imageStore.get('angry')
-                        }
-                    />
+                    <img src={result === Result.WIN ? happy : angry} />
                 </div>
             </div>
         </div>
@@ -117,7 +100,7 @@ export default function PokeGame() {
             <button
                 className='game-ball'
                 onClick={() => setShowGame(true)}>
-                <img src={imageStore.get('pokeball')} />
+                <img src={pokeball} />
             </button>
         </div>
     );

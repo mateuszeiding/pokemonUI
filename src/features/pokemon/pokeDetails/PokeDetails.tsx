@@ -43,11 +43,7 @@ export default function PokeDetails() {
             <div className='row mb-6'>
                 <Suspense>
                     <Await resolve={pokeData}>
-                        {(pokeData: { data: PokeData }) => (
-                            <PokeAbilities
-                                abilities={pokeData.data.abilities}
-                            />
-                        )}
+                        <PokeAbilities />
                     </Await>
                 </Suspense>
             </div>

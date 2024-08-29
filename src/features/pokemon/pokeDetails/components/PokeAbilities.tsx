@@ -1,9 +1,12 @@
+import { PokeData } from '@/services/loaders/pokeDetails.loader';
 import { Ability } from 'pokenode-ts';
 import { Suspense } from 'react';
 import { Await, useAsyncValue } from 'react-router-dom';
 import { Fragment } from 'react/jsx-runtime';
 
-export default function PokeAbilities({ abilities }: { abilities: Ability[] }) {
+export default function PokeAbilities() {
+    const { data } = useAsyncValue() as { data: PokeData };
+    const abilities = data.abilities;
     return (
         <div className='col d-flex flex-column g-row-3 flex-wrap'>
             {abilities.map((ability, index) => (
