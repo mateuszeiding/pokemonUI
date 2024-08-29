@@ -73,10 +73,10 @@ export default function PokeList() {
             <div
                 ref={listRef}
                 className='col-7 overflow-y-scroll overflow-x-hidden h-100 pt-6'>
-                <div className='row d-flex g-6 pb-3'>
+                <div className='row row-cols-sm-1 row-cols-md-2 row-cols-xl-3 row-cols-xxl-5 g-row-6 pb-3'>
                     {pokemons?.results.map((pokemon) => (
                         <div
-                            className='col flex-0'
+                            className='col'
                             key={pokemon.name}>
                             <PokeCard
                                 id={pokemon.url.split('/').slice(-2)[0]}
