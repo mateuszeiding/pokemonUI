@@ -28,7 +28,7 @@
 .poke-mask {
     background-color: var(--em-body-color-primary);
     animation-name: mask-render;
-    animation-duration: 300ms;
+    animation-duration: 500ms;
     animation-timing-function: ease-in;
     mask-size: 80%;
     mask-repeat: no-repeat;
@@ -42,8 +42,15 @@
     }
 
     &-skeleton {
-        @extend .poke-mask;
-        background-color: transparent;
+        border-radius: 40rem;
+        width: 20.6rem;
+        margin: auto;
+        padding: 1.8rem 0;
+        transform: rotate(0deg);
+        animation-name: rotate;
+        animation-duration: 700ms;
+        animation-iteration-count: infinite;
+        animation-timing-function: steps(6);
     }
 }
 .poke-mask-img {
@@ -57,6 +64,23 @@
 
     &.show {
         opacity: 1;
+    }
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+        padding: 1.8rem 0;
+    }
+
+    from {
+        padding: 1.8rem 0;
+        transform: rotate(0deg);
+    }
+
+    50% {
+        padding: 5rem 3.2rem;
+        transform: rotate(180deg);
     }
 }
 
