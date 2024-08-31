@@ -2,6 +2,8 @@ import { PokeData } from '@/services/loaders/pokeDetails.loader';
 import { imageSourcePromise } from '@/utils/imageSourcePromise';
 import { Suspense } from 'react';
 import { Await, useLocation } from 'react-router-dom';
+import { getSpriteUrl } from '../utils/getSpriteUrl';
+import CookieService from '@/utils/cookieService';
 
 export default function PokeBaseData({
     pokeData,
@@ -20,6 +22,8 @@ export default function PokeBaseData({
         'Special-Defense',
         'Speed',
     ] as const;
+
+    const spriteConfig = CookieService.getSpriteConfig();
 
     const getThreeDigitStat = (stat: number) => {
         return stat.toString().padStart(3, '0');
@@ -67,9 +71,11 @@ export default function PokeBaseData({
                                 }>
                                 <Await
                                     resolve={imageSourcePromise(
-                                        data.pokemon.sprites.other?.[
-                                            'official-artwork'
-                                        ].front_default ?? ''
+                                        getSpriteUrl(
+                                            data.pokemon,
+                                            spriteConfig.generation,
+                                            spriteConfig.game
+                                        )
                                     )}>
                                     {(src: string) => (
                                         <img
