@@ -25,7 +25,7 @@
     }
 
     &.settings-open {
-        transform: rotate3d(0, 0, 0, 180deg);
+        transform: rotate3d(0, 0, 0, 180deg) rotateX(180deg);
         #first {
             opacity: 0;
             z-index: 0;
