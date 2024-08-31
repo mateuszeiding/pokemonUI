@@ -1,0 +1,34 @@
+.settings-button {
+    --transition-speed: 0.5s;
+    position: relative;
+    transform: rotate3d(1, 0, 0, 0deg);
+    transition: transform var(--transition-speed) ease-in-out;
+
+    #first {
+        opacity: 1;
+        transition: opacity calc(var(--transition-speed) / 2)
+            calc(var(--transition-speed) / 4) ease-in-out;
+    }
+
+    #second {
+        position: absolute;
+        transform: rotateX(180deg);
+        left: 0;
+        right: 0;
+        top: 0;
+        display: flex;
+        opacity: 0;
+        transition: opacity calc(var(--transition-speed) / 2)
+            calc(var(--transition-speed) / 4) ease-in-out;
+    }
+
+    &.settings-open {
+        transform: rotate3d(1, 0, 0, 180deg);
+        #first {
+            opacity: 0;
+        }
+        #second {
+            opacity: 1;
+        }
+    }
+}
