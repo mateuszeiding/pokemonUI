@@ -16,7 +16,7 @@ export default function PokeDetails() {
     const name = location.state.name as string;
 
     return (
-        <div style={{ maxWidth: '700px' }}>
+        <div style={{ maxWidth: '700px', height: '100%' }}>
             <div className='row pb-5'>
                 <div className='col d-flex align-items-center g-col-8 justify-content-between'>
                     <Suspense
@@ -43,7 +43,7 @@ export default function PokeDetails() {
             <div className='row mb-6'>
                 <Suspense>
                     <Await resolve={pokeData}>
-                        <PokeAbilities />
+                        <PokeAbilities key={name} />
                     </Await>
                 </Suspense>
             </div>

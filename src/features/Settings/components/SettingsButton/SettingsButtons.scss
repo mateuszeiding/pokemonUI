@@ -1,7 +1,7 @@
 .settings-button {
     --transition-speed: 0.5s;
     position: relative;
-    transform: rotate3d(1, 0, 0, 0deg);
+    transform: rotate3d(0, 0, 0, 0deg);
     transition: transform var(--transition-speed) ease-in-out;
 
     #first {
@@ -25,7 +25,7 @@
     }
 
     &.settings-open {
-        transform: rotate3d(1, 0, 0, 180deg);
+        transform: rotate3d(0, 0, 0, 180deg);
         #first {
             opacity: 0;
             z-index: 0;

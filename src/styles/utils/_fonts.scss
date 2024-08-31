@@ -1,45 +1,45 @@
 @each $key, $value in $font-size {
     .fs-#{$key} {
-        font-size: $value;
+        font-size: $value !important;
     }
 }
 
 @each $key, $value in $font-weight {
     .fw-#{$key} {
-        font-weight: $value;
+        font-weight: $value !important;
     }
 }
 
 @each $key, $value in $line-height {
     .lh-#{$key} {
-        line-height: $value;
+        line-height: $value !important;
     }
 }
 
 .tx-uppercase {
-    text-transform: uppercase;
+    text-transform: uppercase !important;
 }
 
 .tx-lowercase {
-    text-transform: lowercase;
+    text-transform: lowercase !important;
 }
 
 .tx-capitalize {
-    text-transform: capitalize;
+    text-transform: capitalize !important;
 }
 
 .tx-right {
-    text-align: right;
+    text-align: right !important;
 }
 
 .tx-center {
-    text-align: center;
+    text-align: center !important;
 }
 
 .tx-left {
-    text-align: left;
+    text-align: left !important;
 }
 
 .tx-justify {
-    text-align: justify;
+    text-align: justify !important;
 }
