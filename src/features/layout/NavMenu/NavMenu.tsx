@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import PokeGame from '../../pokeGame/PokeGame';
-import SettingsButton from './components/SettingsButton';
+import Settings from '@/features/Settings/Settings';
 
 export default function NavMenu() {
     return (
@@ -23,7 +23,7 @@ export default function NavMenu() {
                     Pizza
                 </NavLink>
             </nav>
-            <SettingsButton />
+            <Settings />
         </>
     );
 }

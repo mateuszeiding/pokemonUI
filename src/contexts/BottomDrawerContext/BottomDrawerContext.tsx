@@ -19,7 +19,6 @@ export function BottomDrawerProvider({ children }: PropsWithChildren) {
 
     const toggle = () => setIsOpen((prev) => !prev);
     const setRef = useCallback((node: Node) => {
-        console.log(node);
         if (node instanceof HTMLDivElement) setDrawerBoxRef(node);
     }, []);
 

@@ -1,29 +1,36 @@
 import { useBottomDrawerContext } from '@/contexts/BottomDrawerContext/useBottromDrawerContext';
 import { cls } from '@/utils/className';
-import './SettingsButton.scss';
-import { createPortal } from 'react-dom';
-import Settings from '@/features/Settings/Settings';
-import { useState } from 'react';
-import CookieService from '@/utils/cookieService';
+import './SettingsButtons.scss';
 
-export default function SettingsButton() {
-    const { isOpen, drawerBoxRef, toggle } = useBottomDrawerContext();
-    const [settingsMounted, setSettingsMounted] = useState(false);
-    const [saveDisabled, setSaveDisabled] = useState(
-        !CookieService.cookiesEnabled()
-    );
+type SettingsButtons = {
+    setIsSettingsMounted: (mounted: boolean) => void;
+    saveSpriteConfig: () => void;
+};
+
+export default function SettingsButtons({
+    setIsSettingsMounted,
+    saveSpriteConfig,
+}: Readonly<SettingsButtons>) {
+    const { isOpen, toggle } = useBottomDrawerContext();
 
     const toggleSettings = () => {
         if (!isOpen) {
-            setSettingsMounted(true);
+            setIsSettingsMounted(true);
         } else {
             setTimeout(() => {
-                setSettingsMounted(false);
+                setIsSettingsMounted(false);
             }, 500);
         }
 
         toggle();
     };
+
+    const saveSettings = () => {
+        saveSpriteConfig();
+        toggleSettings();
+    };
+
+    console.log(document.cookie);
 
     return (
         <>
@@ -53,19 +60,11 @@ export default function SettingsButton() {
                             'r-top-left-0 r-bottom-left-0',
                             'tx-uppercase align-self-end'
                         )}
-                        disabled={saveDisabled}
-                        onClick={toggleSettings}>
+                        onClick={saveSettings}>
                         Save
                     </button>
                 </div>
             </div>
-            {settingsMounted &&
-                createPortal(
-                    <Settings
-                        enableSave={() => setSaveDisabled((prev) => !prev)}
-                    />,
-                    drawerBoxRef!
-                )}
         </>
     );
 }

@@ -16,10 +16,6 @@ export default class CookieService {
             ?.split('=')[1];
     }
 
-    static cookiesEnabled() {
-        return document.cookie.includes('cookies=true');
-    }
-
     static getSpriteConfig<
         Generation extends keyof VersionSprites,
         Game extends keyof VersionSprites[Generation],
@@ -30,5 +26,20 @@ export default class CookieService {
             generation: gen,
             game: (CookieService.getCookie('game') ?? 'red-blue') as Game,
         } satisfies GenerationGamePair<Generation, Game>;
+    }
+
+    static setSpriteConfig(
+        config: GenerationGamePair<
+            keyof VersionSprites,
+            keyof VersionSprites[keyof VersionSprites]
+        >
+    ) {
+        document.cookie = `generation=${config.generation};`;
+        document.cookie = `game=${config.game};`;
+    }
+
+    static clearSpriteConfig() {
+        document.cookie = 'generation=generation-i;';
+        document.cookie = 'game=red-blue;';
     }
 }

@@ -24,7 +24,7 @@ export default function PokeBaseData({
     ] as const;
 
     const spriteConfig = CookieService.getSpriteConfig();
-
+    console.log(spriteConfig);
     const getThreeDigitStat = (stat: number) => {
         return stat.toString().padStart(3, '0');
     };
