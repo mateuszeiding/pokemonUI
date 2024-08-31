@@ -30,8 +30,6 @@ export default function SettingsButtons({
         toggleSettings();
     };
 
-    console.log(document.cookie);
-
     return (
         <>
             <div className={cls('settings-button', isOpen && 'settings-open')}>

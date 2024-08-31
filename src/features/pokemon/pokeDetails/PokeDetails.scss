@@ -32,7 +32,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    row-gap: 0.8rem;
     border-radius: 0.8rem;
     background-color: var(--em-gray-100);
     border: 1.2rem solid var(--em-gray-200);
@@ -63,7 +62,7 @@
         }
     }
 
-    .prev &-text {
+    &.prev &-text {
         &:nth-last-child(1) {
             left: -120%;
         }
@@ -75,8 +74,8 @@
         }
     }
 
-    .active &-text {
-        &:nth-last-child(1) {
+    &.active &-text {
+        &:nth-last-child(1):not(:only-child) {
             transition: 0s;
             left: -120%;
         }

@@ -19,13 +19,10 @@ export default function Settings() {
     >(CookieService.getSpriteConfig().game);
 
     function saveSpriteConfig() {
-        console.log(game, generation);
         CookieService.setSpriteConfig({
             game,
             generation,
         });
-
-        console.log(CookieService.getSpriteConfig());
     }
 
     return (

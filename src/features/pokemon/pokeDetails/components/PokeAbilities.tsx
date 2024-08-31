@@ -15,11 +15,14 @@ export default function PokeAbilities() {
         setDirection(dir);
         activeIndex.current =
             dir === 'right'
-                ? (activeIndex.current - 2 * -1) % abilities.length
+                ? (activeIndex.current -
+                      (abilities.length === 2 ? 1 : 2) * -1) %
+                  abilities.length
                 : (activeIndex.current + 1) % abilities.length;
         setTimeout(() => {
             setDirection(null);
             setAbilities((prev) => {
+                if (prev.length === 2) return [prev[1], prev[0]];
                 if (dir === 'right') {
                     const last = prev.pop();
                     prev.unshift(last!);
@@ -37,7 +40,8 @@ export default function PokeAbilities() {
             <div className='d-flex align-items-center g-col-3'>
                 <button
                     className='btn btn-primary'
-                    onClick={() => handleDirection('left')}>
+                    onClick={() => handleDirection('left')}
+                    disabled={abilities.length < 2}>
                     &lt;
                 </button>
                 <div className='d-flex p-relative d-flex align-items-center'>
@@ -76,7 +80,7 @@ export default function PokeAbilities() {
                                                     url: '',
                                                 },
                                                 short_effect:
-                                                    'Increases damage inflicted to 1.25x against Pokémon of the same gender, but decreases damage to 0.75× against the opposite gender.',
+                                                    'Causes 1/8 max HP in damage each turn during strong sunlight, but heals for 1/8 max HP during rain. Increases damage from fire moves to 1.25×, but absorbs water moves, healing for 1/4 max HP.',
                                             },
                                         ],
                                         flavor_text_entries: [],
@@ -92,7 +96,8 @@ export default function PokeAbilities() {
                                     <PokeAbility template />
                                 </div>
                             </Await>
-                            {/* <Suspense
+                            <div>
+                                {/* <Suspense
                                 fallback={
                                     <div className='skeleton poke-ability-skeleton r-4'>
                                         <span className='skeleton-text'>
@@ -102,20 +107,26 @@ export default function PokeAbilities() {
                                         </span>
                                     </div>
                                 }> */}
-                            {abilities.map((ability, index) => (
-                                <Fragment key={index}>
-                                    <Await resolve={ability}>
-                                        <PokeAbility />
-                                    </Await>
-                                </Fragment>
-                            ))}
+                                {(abilities.length === 2
+                                    ? [abilities[1], ...abilities]
+                                    : abilities
+                                ).map((ability, index) => (
+                                    <Fragment key={index}>
+                                        <Await resolve={ability}>
+                                            <PokeAbility />
+                                        </Await>
+                                    </Fragment>
+                                ))}
+                            </div>
+
                             {/* </Suspense> */}
                         </div>
                     </div>
                 </div>
                 <button
                     className='btn btn-primary fw-bold'
-                    onClick={() => handleDirection('right')}>
+                    onClick={() => handleDirection('right')}
+                    disabled={abilities.length < 2}>
                     &gt;
                 </button>
             </div>
