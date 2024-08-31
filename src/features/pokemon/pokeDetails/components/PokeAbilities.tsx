@@ -19,20 +19,23 @@ export default function PokeAbilities() {
                       (abilities.length === 2 ? 1 : 2) * -1) %
                   abilities.length
                 : (activeIndex.current + 1) % abilities.length;
+
+        const getNewAbilities = () => {
+            if (abilities.length === 2) return [abilities[1], abilities[0]];
+            if (dir === 'right') {
+                const last = abilities.pop();
+                abilities.unshift(last!);
+            } else {
+                const first = abilities.shift();
+                abilities.push(first!);
+            }
+
+            return abilities;
+        };
+
         setTimeout(() => {
             setDirection(null);
-            setAbilities((prev) => {
-                if (prev.length === 2) return [prev[1], prev[0]];
-                if (dir === 'right') {
-                    const last = prev.pop();
-                    prev.unshift(last!);
-                } else {
-                    const first = prev.shift();
-                    prev.push(first!);
-                }
-
-                return prev;
-            });
+            setAbilities(getNewAbilities());
         }, 500);
     };
 
