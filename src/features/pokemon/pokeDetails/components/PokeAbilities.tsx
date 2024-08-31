@@ -30,7 +30,8 @@ export default function PokeAbilities() {
                     const first = prev.shift();
                     prev.push(first!);
                 }
-                return [...prev];
+
+                return prev;
             });
         }, 500);
     };
