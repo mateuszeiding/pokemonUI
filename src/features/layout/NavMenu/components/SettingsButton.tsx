@@ -4,10 +4,14 @@ import './SettingsButton.scss';
 import { createPortal } from 'react-dom';
 import Settings from '@/features/Settings/Settings';
 import { useState } from 'react';
+import CookieService from '@/utils/cookieService';
 
 export default function SettingsButton() {
     const { isOpen, drawerBoxRef, toggle } = useBottomDrawerContext();
     const [settingsMounted, setSettingsMounted] = useState(false);
+    const [saveDisabled, setSaveDisabled] = useState(
+        !CookieService.cookiesEnabled()
+    );
 
     const toggleSettings = () => {
         if (!isOpen) {
@@ -49,12 +53,19 @@ export default function SettingsButton() {
                             'r-top-left-0 r-bottom-left-0',
                             'tx-uppercase align-self-end'
                         )}
+                        disabled={saveDisabled}
                         onClick={toggleSettings}>
                         Save
                     </button>
                 </div>
             </div>
-            {settingsMounted && createPortal(<Settings />, drawerBoxRef!)}
+            {settingsMounted &&
+                createPortal(
+                    <Settings
+                        enableSave={() => setSaveDisabled((prev) => !prev)}
+                    />,
+                    drawerBoxRef!
+                )}
         </>
     );
 }

@@ -16,6 +16,10 @@ export default class CookieService {
             ?.split('=')[1];
     }
 
+    static cookiesEnabled() {
+        return document.cookie.includes('cookies=true');
+    }
+
     static getSpriteConfig<
         Generation extends keyof VersionSprites,
         Game extends keyof VersionSprites[Generation],

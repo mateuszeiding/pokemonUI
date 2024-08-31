@@ -1,13 +1,17 @@
-export default function Settings() {
-    const getCookie = (name: string) =>
-        document.cookie
-            .split('; ')
-            .find((row) => row.startsWith(name + '='))
-            ?.split('=')[1];
+import CookieService from '@/utils/cookieService';
+
+export default function Settings({ enableSave }: { enableSave: () => void }) {
+    document.cookie = 'cookies=true';
     document.cookie = 'generation=generation-i;';
     document.cookie = 'game=red-blue;';
 
-    console.log(getCookie('generation'));
-    console.log(getCookie('game'));
-    return <div>lol</div>;
+    return (
+        <div>
+            <input
+                type='checkbox'
+                defaultChecked={CookieService.cookiesEnabled() ?? false}
+                onChange={enableSave}
+            />
+        </div>
+    );
 }

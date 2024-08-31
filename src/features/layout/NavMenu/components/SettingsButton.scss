@@ -6,6 +6,7 @@
 
     #first {
         opacity: 1;
+        z-index: 1;
         transition: opacity calc(var(--transition-speed) / 2)
             calc(var(--transition-speed) / 4) ease-in-out;
     }
@@ -18,6 +19,7 @@
         top: 0;
         display: flex;
         opacity: 0;
+        z-index: 0;
         transition: opacity calc(var(--transition-speed) / 2)
             calc(var(--transition-speed) / 4) ease-in-out;
     }
@@ -26,9 +28,11 @@
         transform: rotate3d(1, 0, 0, 180deg);
         #first {
             opacity: 0;
+            z-index: 0;
         }
         #second {
             opacity: 1;
+            z-index: 1;
         }
     }
 }
