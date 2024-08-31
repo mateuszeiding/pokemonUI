@@ -1,23 +1,39 @@
 .border {
-    border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
+    border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color) !important;
 }
 
 .border-top {
     border-top: var(--#{$prefix}border-width) solid
-        var(--#{$prefix}border-color);
+        var(--#{$prefix}border-color) !important;
 }
 
 .border-right {
     border-right: var(--#{$prefix}border-width) solid
-        var(--#{$prefix}border-color);
+        var(--#{$prefix}border-color) !important;
 }
 
 .border-bottom {
     border-bottom: var(--#{$prefix}border-width) solid
-        var(--#{$prefix}border-color);
+        var(--#{$prefix}border-color) !important;
 }
 
 .border-left {
     border-left: var(--#{$prefix}border-width) solid
-        var(--#{$prefix}border-color);
+        var(--#{$prefix}border-color) !important;
+}
+
+.border-right-none {
+    border-right: none !important;
+}
+
+.border-left-none {
+    border-left: none !important;
+}
+
+.border-top-none {
+    border-top: none !important;
+}
+
+.border-bottom-none {
+    border-bottom: none !important;
 }

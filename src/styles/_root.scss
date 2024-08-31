@@ -4,6 +4,18 @@
         --#{$prefix}#{$key}: #{$value};
     }
 
+    @each $key, $value in $reds {
+        --#{$prefix}#{$key}: #{$value};
+    }
+
+    @each $key, $value in $blues {
+        --#{$prefix}#{$key}: #{$value};
+    }
+
+    @each $key, $value in $greens {
+        --#{$prefix}#{$key}: #{$value};
+    }
+
     // body
     --#{$prefix}body-bg: var(--#{$prefix}gray-000);
     --#{$prefix}body-color-primary: var(--#{$prefix}gray-900);

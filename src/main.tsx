@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 
 import './styles/index.scss';
 import Router from './Router.tsx';
+import ContextProvider from './contexts/ContextProvider.tsx';
 
 const root = document.getElementById('root');
 if (root === null) {
@@ -11,6 +12,8 @@ if (root === null) {
 
 createRoot(root).render(
     <StrictMode>
-        <Router />
+        <ContextProvider>
+            <Router />
+        </ContextProvider>
     </StrictMode>
 );

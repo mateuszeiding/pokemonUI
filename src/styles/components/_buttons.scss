@@ -1,9 +1,15 @@
 .btn {
+    --default-border-color: var(--#{$prefix}border-color-light);
+    --default-shadow-border-color: var(--#{$prefix}border-color);
+    --hover-border-color: var(--#{$prefix}border-color-light-hover);
+    --hover-shadow-border-color: var(--#{$prefix}border-color-light);
+    --active-border-color: var(--#{$prefix}gray-700);
+    --active-shadow-border-color: var(--#{$prefix}gray-600);
     display: block;
     padding: 0.8rem 1.2rem;
     color: var(--#{$prefix}body-color-secondary);
-    border: 4px solid var(--#{$prefix}border-color-light);
-    border-top: 2px solid var(--#{$prefix}border-color-light);
+    border: 4px solid var(--default-border-color);
+    border-top: 2px solid var(--default-border-color);
     border-radius: 0.8rem;
     background-color: var(--#{$prefix}gray-200);
     text-align: center;
@@ -16,14 +22,14 @@
     top: 0;
 
     box-shadow:
-        0 0.6rem var(--#{$prefix}border-color),
+        0 0.6rem var(--default-shadow-border-color),
         0 1.4rem rgba(0, 0, 0, 0.4);
 
     &:hover {
         background-color: var(--#{$prefix}gray-300);
-        border-color: var(--#{$prefix}border-color-light-hover);
+        border-color: var(--hover-border-color);
         box-shadow:
-            0 0.6rem var(--#{$prefix}border-color-light),
+            0 0.6rem var(--hover-shadow-border-color),
             0 0.8rem rgba(0, 0, 0, 0.4);
     }
 
@@ -41,11 +47,12 @@
         color: var(--#{$prefix}body-color-primary);
     }
 
-    &.active {
+    &.active,
+    &:active {
         top: 0.4rem;
-        border-color: var(--#{$prefix}gray-700);
+        border-color: var(--active-border-color);
         box-shadow:
-            0 0.6rem var(--#{$prefix}gray-600),
+            0 0.6rem var(--active-shadow-border-color),
             0 0.2rem rgba(0, 0, 0, 0.4);
     }
 
@@ -56,5 +63,34 @@
 
     &-justified {
         width: 100%;
+    }
+
+    &.theme {
+        &-red {
+            --default-border-color: var(--#{$prefix}red-700);
+            --default-shadow-border-color: var(--#{$prefix}red-900);
+            --hover-border-color: var(--#{$prefix}red-600);
+            --hover-shadow-border-color: var(--#{$prefix}red-800);
+            --active-border-color: var(--#{$prefix}red-400);
+            --active-shadow-border-color: var(--#{$prefix}red-600);
+        }
+
+        &-blue {
+            --default-border-color: var(--#{$prefix}blue-700);
+            --default-shadow-border-color: var(--#{$prefix}blue-900);
+            --hover-border-color: var(--#{$prefix}blue-600);
+            --hover-shadow-border-color: var(--#{$prefix}blue-800);
+            --active-border-color: var(--#{$prefix}blue-400);
+            --active-shadow-border-color: var(--#{$prefix}blue-600);
+        }
+
+        &-green {
+            --default-border-color: var(--#{$prefix}green-700);
+            --default-shadow-border-color: var(--#{$prefix}green-900);
+            --hover-border-color: var(--#{$prefix}green-600);
+            --hover-shadow-border-color: var(--#{$prefix}green-800);
+            --active-border-color: var(--#{$prefix}green-400);
+            --active-shadow-border-color: var(--#{$prefix}green-600);
+        }
     }
 }

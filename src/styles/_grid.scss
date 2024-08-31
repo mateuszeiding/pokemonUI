@@ -1,15 +1,18 @@
 .grid-main {
     display: flex;
     flex-direction: row;
-    height: 100%;
+    height: calc(100vh - 4.8rem);
 
-    --#{$prefix}menu-widht: 24rem;
+    --#{$prefix}menu-width: 24rem;
 
     .grid-menu {
-        min-width: var(--#{$prefix}menu-widht);
-        width: var(--#{$prefix}menu-widht);
+        display: flex;
+        flex-direction: column;
+        min-width: var(--#{$prefix}menu-width);
+        width: var(--#{$prefix}menu-width);
         background-color: var(--#{$prefix}gray-100);
         padding: 1.6rem;
+        padding-bottom: 3.2rem;
         border-right: 1px solid var(--#{$prefix}border-color);
     }
 }
