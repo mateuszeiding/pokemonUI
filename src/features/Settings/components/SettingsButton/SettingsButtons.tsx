@@ -1,7 +1,7 @@
 import { useBottomDrawerContext } from '@/contexts/BottomDrawerContext/useBottromDrawerContext';
 import { cls } from '@/utils/className';
 import './SettingsButtons.scss';
-import { useEffect, useRef } from 'react';
+import { useWabamButtonEffect } from '@/hooks/useWabamButtonEffect';
 
 type SettingsButtons = {
     setIsSettingsMounted: (mounted: boolean) => void;
@@ -31,35 +31,10 @@ export default function SettingsButtons({
         toggleSettings();
     };
 
-    const settingsButtonRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        if (settingsButtonRef.current) {
-            const controller = new AbortController();
-            settingsButtonRef.current.addEventListener(
-                'click',
-                () => {
-                    const node = document.createElement('div');
-                    node.classList.add('wabam-effect');
-                    settingsButtonRef.current?.appendChild(node);
-
-                    setTimeout(() => {
-                        node.remove();
-                    }, 500);
-                },
-                { signal: controller.signal }
-            );
-
-            return () => {
-                controller.abort();
-            };
-        }
-    }, []);
-
     return (
         <>
             <div
-                ref={settingsButtonRef}
+                ref={useWabamButtonEffect().settingsButtonRef}
                 className={cls('settings-button', isOpen && 'settings-open')}>
                 <button
                     id='first'
