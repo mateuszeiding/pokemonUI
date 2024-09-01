@@ -8,12 +8,11 @@
         opacity: 1;
         z-index: 1;
         transition: opacity calc(var(--transition-speed) / 2)
-            calc(var(--transition-speed) / 4) ease-in-out;
+            calc(var(--transition-speed) / 6) ease-in-out;
     }
 
     #second {
         position: absolute;
-        transform: rotateX(180deg);
         left: 0;
         right: 0;
         top: 0;
@@ -21,11 +20,40 @@
         opacity: 0;
         z-index: 0;
         transition: opacity calc(var(--transition-speed) / 2)
-            calc(var(--transition-speed) / 4) ease-in-out;
+            calc(var(--transition-speed) / 6) ease-in-out;
+    }
+
+    .wabam-effect {
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            background-color: var(--em-gray-900);
+            border-radius: 50%;
+            border: 1px solid var(--em-gray-200);
+            border-right: 0px solid var(--em-gray-800);
+            border-radius: 0.8rem;
+            border-bottom: 4px solid var(--em-gray-800);
+
+            left: 50%;
+            right: 50%;
+            z-index: 20;
+            padding: 0.8rem 0rem;
+            border-top: 2px solid var(--em-gray-800);
+            border-left: 0px solid var(--em-gray-800);
+            filter: drop-shadow(0 0 0rem var(--em-gray-800));
+            animation: wabam-anime 0.4s ease-in-out;
+
+            // transition:
+            //     all 0.3s,
+            //     z-index 0s 0.3s,
+            //     filter 0.2s 0.3s;
+        }
     }
 
     &.settings-open {
-        transform: rotate3d(0, 0, 0, 180deg) rotateX(180deg);
+        // transform: rotate3d(0, 0, 0, 180deg) rotateX(180deg);
         #first {
             opacity: 0;
             z-index: 0;
@@ -34,5 +62,39 @@
             opacity: 1;
             z-index: 1;
         }
+    }
+}
+
+@keyframes wabam-anime {
+    0% {
+        left: 50%;
+        right: 50%;
+        z-index: 20;
+        padding: 0.8rem 0rem;
+        border-top: 2px solid var(--em-gray-800);
+        border-bottom: 4px solid var(--em-gray-800);
+        filter: drop-shadow(0 0 0rem var(--em-gray-800));
+    }
+    60% {
+        left: 0;
+        right: 0;
+        z-index: 20;
+        padding: 0.8 1.2rem;
+        border-right: 4px solid var(--em-gray-800);
+        border-left: 4px solid var(--em-gray-800);
+        filter: drop-shadow(0 0 0.4rem var(--em-gray-800));
+    }
+
+    80% {
+        z-index: 20;
+    }
+    100% {
+        z-index: 20;
+        left: 0;
+        right: 0;
+        filter: drop-shadow(0 0 0.4rem var(--em-gray-800));
+        padding: 0.8 1.2rem;
+        border-right: 4px solid var(--em-gray-800);
+        border-left: 4px solid var(--em-gray-800);
     }
 }
