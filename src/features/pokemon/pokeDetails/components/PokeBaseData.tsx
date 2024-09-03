@@ -73,8 +73,8 @@ export default function PokeBaseData({
                                     resolve={imageSourcePromise(
                                         getSpriteUrl(
                                             data.pokemon,
-                                            spriteConfig.generation,
-                                            spriteConfig.game
+                                            spriteConfig.config,
+                                            spriteConfig.subconfig
                                         )
                                     )}>
                                     {(src: string) => (

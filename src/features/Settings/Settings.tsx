@@ -1,6 +1,5 @@
 import { useBottomDrawerContext } from '@/contexts/BottomDrawerContext/useBottromDrawerContext';
 import CookieService from '@/utils/cookieService';
-import { VersionSprites } from 'pokenode-ts';
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import SettingsPortal from './components/SettingsPortal/SettingsPortal';
@@ -11,18 +10,15 @@ export default function Settings() {
 
     const [isSettingsMounted, setIsSettingsMounted] = useState(false);
 
-    const [generation, setGeneration] = useState<keyof VersionSprites>(
-        CookieService.getSpriteConfig().generation
+    const [category, setCategory] = useState<string>(
+        CookieService.getSpriteConfig().config
     );
-    const [game, setGame] = useState<
-        keyof VersionSprites[keyof VersionSprites]
-    >(CookieService.getSpriteConfig().game);
+    const [subcategory, setSubcategory] = useState<string>(
+        CookieService.getSpriteConfig().subconfig
+    );
 
     function saveSpriteConfig() {
-        CookieService.setSpriteConfig({
-            game,
-            generation,
-        });
+        CookieService.setSpriteConfig(category, subcategory);
     }
 
     return (
@@ -34,7 +30,12 @@ export default function Settings() {
             {isSettingsMounted &&
                 createPortal(
                     <SettingsPortal
-                        {...{ generation, game, setGeneration, setGame }}
+                        {...{
+                            category,
+                            subcategory,
+                            setCategory,
+                            setSubcategory,
+                        }}
                     />,
                     drawerBoxRef!
                 )}

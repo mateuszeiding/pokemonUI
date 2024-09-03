@@ -1,28 +1,34 @@
-import { Pokemon, VersionSprites } from 'pokenode-ts';
+import { OtherPokemonSprites, Pokemon, VersionSprites } from 'pokenode-ts';
 
-// Function to create a generation string
-export type GenerationGamePair<
-    G extends keyof VersionSprites,
-    Game extends keyof VersionSprites[G],
-> = {
-    generation: G;
-    game: Game;
+type FrontDefault = {
+    front_default: string;
 };
 
-export function getSpriteUrl<
-    G extends keyof VersionSprites,
-    Game extends keyof VersionSprites[G],
->(pokemon: Pokemon, generation: G, game: Game): string {
-    const sprites: VersionSprites[G] = pokemon.sprites.versions[generation];
-    const sprite = sprites[game];
-    if (
-        sprite !== null &&
-        typeof sprite === 'object' &&
-        'front_default' in sprite &&
-        typeof sprite.front_default === 'string'
-    ) {
-        return sprite.front_default;
-    } else {
-        return pokemon.sprites.other?.['official-artwork'].front_default ?? '';
+// Typescript won the battle
+export function getSpriteUrl(
+    pokemon: Pokemon,
+    category: unknown,
+    subcategory: unknown
+): string {
+    if (!category || !subcategory) {
+        return pokemon.sprites.front_default ?? '';
     }
+    let spriteUrl: string;
+
+    if (category === 'other') {
+        const other = pokemon.sprites.other;
+
+        spriteUrl =
+            other?.[subcategory as keyof OtherPokemonSprites].front_default ??
+            '';
+    } else {
+        const versions = pokemon.sprites.versions;
+        const subcat = versions[category as keyof VersionSprites]?.[
+            subcategory as keyof VersionSprites[keyof VersionSprites]
+        ] as FrontDefault;
+
+        spriteUrl = subcat?.front_default ?? '';
+    }
+
+    return spriteUrl ?? '';
 }

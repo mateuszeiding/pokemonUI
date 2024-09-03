@@ -1,11 +1,11 @@
-import { VersionSprites } from 'pokenode-ts';
+import { SpriteConfig } from '@/features/Settings/SpriteConfig.model';
 
 export type GenerationGamePair<
-    G extends keyof VersionSprites,
-    Game extends keyof VersionSprites[G],
+    G extends keyof SpriteConfig,
+    Game extends keyof SpriteConfig[G],
 > = {
-    generation: G;
-    game: Game;
+    config: G;
+    subconfig: Game;
 };
 
 export default class CookieService {
@@ -16,26 +16,16 @@ export default class CookieService {
             ?.split('=')[1];
     }
 
-    static getSpriteConfig<
-        Generation extends keyof VersionSprites,
-        Game extends keyof VersionSprites[Generation],
-    >() {
-        const gen = (CookieService.getCookie('generation') ??
-            'generation-i') as Generation;
+    static getSpriteConfig() {
         return {
-            generation: gen,
-            game: (CookieService.getCookie('game') ?? 'red-blue') as Game,
-        } satisfies GenerationGamePair<Generation, Game>;
+            config: CookieService.getCookie('config') ?? 'generation-i',
+            subconfig: CookieService.getCookie('subconfig') ?? 'red-blue',
+        };
     }
 
-    static setSpriteConfig(
-        config: GenerationGamePair<
-            keyof VersionSprites,
-            keyof VersionSprites[keyof VersionSprites]
-        >
-    ) {
-        document.cookie = `generation=${config.generation};`;
-        document.cookie = `game=${config.game};`;
+    static setSpriteConfig(config: string, subconfig: string) {
+        document.cookie = `config=${config};`;
+        document.cookie = `subconfig=${subconfig};`;
     }
 
     static clearSpriteConfig() {

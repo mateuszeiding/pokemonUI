@@ -1,63 +1,24 @@
-import {
-    GenerationIIISprites,
-    GenerationIISprites,
-    GenerationISprites,
-    GenerationIVSprites,
-    GenerationVIIISprites,
-    GenerationVIISprites,
-    GenerationVISprites,
-    GenerationVSprites,
-    VersionSprites,
-} from 'pokenode-ts';
 import { useRef } from 'react';
+import { SpriteConfig } from '../../SpriteConfig.model';
 
 type SettingsPortal = {
-    generation: keyof VersionSprites;
-    game: keyof VersionSprites[keyof VersionSprites];
-    setGeneration: (generation: keyof VersionSprites) => void;
-    setGame: (game: keyof VersionSprites[keyof VersionSprites]) => void;
+    category: string;
+    subcategory: string;
+    setCategory: (generation: string) => void;
+    setSubcategory: (game: string) => void;
 };
 
-export default function SettingsPortal({
-    game,
-    generation,
-    setGame,
-    setGeneration,
+export default function SettingsPorta({
+    subcategory,
+    category,
+    setSubcategory,
+    setCategory,
 }: Readonly<SettingsPortal>) {
-    const generations: (keyof VersionSprites)[] = [
-        'generation-i',
-        'generation-ii',
-        'generation-iii',
-        'generation-iv',
-        'generation-v',
-        'generation-vi',
-        'generation-vii',
-        'generation-viii',
-    ] as const;
-
-    type Generations =
-        | keyof GenerationISprites
-        | keyof GenerationIISprites
-        | keyof GenerationIIISprites
-        | keyof GenerationIVSprites
-        | keyof GenerationVSprites
-        | keyof GenerationVISprites
-        | keyof GenerationVIISprites
-        | keyof GenerationVIIISprites;
-
-    const games: Record<keyof VersionSprites, Generations[]> = {
-        'generation-i': ['red-blue', 'yellow'],
-        'generation-ii': ['gold', 'silver', 'crystal'],
-        'generation-iii': ['ruby-sapphire', 'emerald'],
-        'generation-iv': ['diamond-pearl', 'platinum'],
-        'generation-v': ['black-white'],
-        'generation-vi': ['x-y', 'omegaruby-alphasapphire'],
-        'generation-vii': ['icons', 'ultra-sun-ultra-moon'],
-        'generation-viii': ['icons'],
-    };
+    const sprites = new SpriteConfig();
 
     const generationRef = useRef<HTMLSelectElement>(null);
     const gameRef = useRef<HTMLSelectElement>(null);
+    const categories = Object.keys(sprites) as (keyof SpriteConfig)[];
 
     return (
         <div>
@@ -66,22 +27,20 @@ export default function SettingsPortal({
                 <label>Generation</label>
                 <select
                     ref={generationRef}
-                    value={generation}
+                    value={category}
                     onChange={(e) => {
-                        const generation = e.target
-                            .value as keyof VersionSprites;
-
-                        const game = games[
-                            generation
-                        ][0] as keyof VersionSprites[keyof VersionSprites];
-                        setGeneration(generation);
-                        setGame(game);
+                        const category = e.target.value;
+                        const sub = Object.keys(
+                            sprites[category as keyof SpriteConfig]
+                        )[0];
+                        setCategory(category);
+                        setSubcategory(sub);
                     }}>
-                    {generations.map((generation) => (
+                    {categories.map((category) => (
                         <option
-                            key={generation}
-                            value={generation}>
-                            {generation}
+                            key={category}
+                            value={category}>
+                            {category}
                         </option>
                     ))}
                 </select>
@@ -90,20 +49,22 @@ export default function SettingsPortal({
                 <label>Game</label>
                 <select
                     ref={gameRef}
-                    value={game}
+                    value={subcategory}
                     onChange={(e) =>
-                        setGame(
+                        setSubcategory(
                             e.target
-                                .value as keyof VersionSprites[keyof VersionSprites]
+                                .value as keyof SpriteConfig[keyof SpriteConfig]
                         )
                     }>
-                    {games[generation].map((game) => (
-                        <option
-                            key={game}
-                            value={game}>
-                            {game}
-                        </option>
-                    ))}
+                    {Object.keys(sprites[category as keyof SpriteConfig]).map(
+                        (subcategory) => (
+                            <option
+                                key={subcategory}
+                                value={subcategory}>
+                                {subcategory}
+                            </option>
+                        )
+                    )}
                 </select>
             </div>
         </div>
